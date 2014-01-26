@@ -1,0 +1,40 @@
+// Mixin
+//-------------------------------------------------//
+@mixin typekit($point) {
+    .wf-active & {
+        @content;
+    }
+}
+//-------------------------------------------------//
+
+
+// Typekit
+//-------------------------------------------------//
+.wf-loading {
+    p,
+    ul li,
+    ol li,
+    a,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    label,
+    input,
+    .btn-secondary,
+    .btn-primary,
+    .event-date,
+    .wine-profile-price,
+    td,
+    th,
+    input,
+    textarea,
+    select,
+    label,
+    span {
+        visibility: hidden;
+    }
+}
+//-------------------------------------------------//

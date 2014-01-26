@@ -1,0 +1,59 @@
+// Button
+//-------------------------------------------------//
+
+.link-text,
+.button {
+    @include inline-block;
+    
+    background: $orange;
+    
+    margin: 0 $spacingTiny 0 0;
+    padding: $spacing*.6+px $spacingDefault;
+    
+    font-family: $headline-font;
+    color: $white;
+    text-decoration: none;
+    font-weight: bold;
+    
+    @include border-radius(6px);
+    
+    @include transition(background .35s ease-in-out);
+    
+    @include breakpoint(phone-max) {
+        margin-bottom: $spacingSmall;
+    }
+    
+    i {
+        margin-right: $spacingTiny;
+                    
+        @include line-height(16);
+        
+        vertical-align: middle;
+    }
+            
+    &:hover,
+    &.-active {
+        background: darken($orange, 15%);
+    }
+    
+    &:last-child {
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+}
+
+.link-text {
+    background: none;
+    
+    color: $greyDark;
+    font-weight: normal;
+    
+    @include transition(color .35s ease-in-out);
+    
+    &:hover {
+        background: none;
+        
+        color: darken($greyDark, 20%);
+    }
+}
+//-------------------------------------------------//

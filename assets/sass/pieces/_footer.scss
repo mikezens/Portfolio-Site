@@ -1,0 +1,122 @@
+// General
+//-------------------------------------------------//
+.ftr-main {
+    .section-row {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    
+    h2,
+    h3 {
+        text-align: left;
+    }
+    
+    h3 {
+        margin-bottom: $spacingDefault;
+    }
+    
+    ul {
+        margin-top: 0;
+        
+        
+        li {
+            color: $greyLight;
+            font-weight: 500;
+        }
+        
+        &.-last {
+            margin-bottom: 0;
+            
+            @include breakpoint(tablet-min) {
+                margin-bottom: $spacingDefault;
+            }
+        }
+    }
+    
+    .ftr-about {
+        margin-bottom: $spacing*1.25+px;
+        
+        img {
+            display: block;
+            
+            width: 47%;
+            max-width: 100%;
+            
+            float: left;
+            
+            margin:$spacingDefault 5% 0 0;
+            
+            @include border-radius(6px);
+            
+            &.-last {
+                margin-right: 0;
+            }
+            
+            @include breakpoint(tablet-min) {
+                width: 100%;
+                
+                float: none;
+                
+                margin: 0 0 $spacing*.75+px 0;
+            }
+        }
+    }
+    
+    .ftr-buttons {
+        background: $greyLightest;
+        
+        margin-top: $spacingBig;
+        padding: $spacingLarge 0 $spacingDefault;
+        
+        @include breakpoint(tablet-min) {
+            padding-bottom: $spacingLarge;
+        }
+        
+        .ftr-social {
+            span,
+            a {
+                @include inline-block;
+                
+                margin-right: $spacingSmall;
+                
+                &.-omega {
+                    margin-right: 0;
+                }
+            }
+            
+            span {
+                &.divider {
+                    margin-right: $spacing*1.5+px;
+                    
+                    @include breakpoint(phone-vert) {
+                        display: none;
+                    }
+                }
+            }
+            
+            a {
+                text-decoration: none;
+            }
+            
+            .link-text {
+                @include breakpoint(phone-vert) {
+                    display: block;
+                }
+            }
+        }
+        
+        .column-two-third {
+            @include breakpoint(tablet-min) {
+                text-align: right;   
+            }
+        }
+        
+        @include breakpoint(phone-max) {
+            .link-text {
+                margin-top: $spacingSmall;
+                padding-left: 0;
+            }
+        }
+    }
+}
+//-------------------------------------------------//

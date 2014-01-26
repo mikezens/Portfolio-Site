@@ -1,0 +1,125 @@
+// RETINA SPRITE
+@mixin retina-sprite($name, $sprites, $sprites2x, $hover: false, $active: false, $active_static: false) {
+    @include _retina-sprite($name, $sprites, $sprites2x, $hover, $active, $active_static);
+}
+
+@mixin retina-sprite-hover($name, $sprites, $sprites2x, $hover: true, $pad: 0) {
+    @if $hover == true {
+        $name_hover: $name + _hover;
+
+        background-position: sprite-position($sprites, $name_hover, -$pad, -$pad);
+    }
+
+    @media (min--moz-device-pixel-ratio: 1.3),
+           (-o-min-device-pixel-ratio: 2.6/2),
+           (-webkit-min-device-pixel-ratio: 1.3),
+           (min-device-pixel-ratio: 1.3),
+           (min-resolution: 1.3dppx) {
+                & {
+                    @if $hover == true {
+                        $name_hover: $name + _hover;
+
+                        $pos: sprite-position($sprites2x, $name_hover, -$pad * 2, -$pad * 2);
+                        background-position: nth($pos, 1) nth($pos, 2) / 2;
+                    }
+                }
+    }
+}
+
+@mixin _retina-sprite($name, $sprites, $sprites2x, $hover, $active, $active_static, $dimensions: true, $pad: 0) {
+    @if $dimensions == true {
+        @include sprite-dimensions($sprites, $name);
+    }
+
+    background-image: sprite-url($sprites);
+    background-position: sprite-position($sprites, $name, -$pad, -$pad);
+    background-repeat: no-repeat;
+
+    &:hover {
+        @include retina-sprite-hover($name, $sprites, $sprites2x, $hover, $pad);
+    }
+
+    @if $active == true {
+        $name_active: $name + _active;
+        &:active {
+            background-position: sprite-position($sprites, $name_active, -$pad, -$pad);
+        }
+    }
+
+    @if $active_static == true {
+        $name_active: $name + _active;
+        &.active {
+            background-position: sprite-position($sprites, $name_active, -$pad, -$pad);
+        }
+    }
+
+    @if $pad > 0 {
+        padding: $pad;
+    }
+
+    @media (min--moz-device-pixel-ratio: 1.3),
+           (-o-min-device-pixel-ratio: 2.6/2),
+           (-webkit-min-device-pixel-ratio: 1.3),
+           (min-device-pixel-ratio: 1.3),
+           (min-resolution: 1.3dppx) {
+                & {
+                    $pos: sprite-position($sprites2x, $name, -$pad * 2, -$pad * 2);
+
+                    background-image: sprite-url($sprites2x);
+                    background-position: nth($pos, 1) nth($pos, 2) / 2;
+
+                    @include background-size(ceil(image-width(sprite-path($sprites2x)) / 2) auto);
+
+                    @if $active == true {
+                        $name_active: $name + _active;
+
+                        &:active{
+                            $pos: sprite-position($sprites2x, $name_active, -$pad * 2, -$pad * 2);
+                            background-position: nth($pos, 1) nth($pos, 2) / 2;
+                        }
+                    }
+                }
+    }
+}
+
+
+@mixin resize-sprite($map, $map2x, $sprite, $percent) {
+  $spritePath:    sprite-path($map);
+  $spriteWidth:   image-width($spritePath);
+  $spriteHeight:  image-height($spritePath);
+
+  $width: image-width(sprite-file($map, $sprite));
+  $height: image-height(sprite-file($map, $sprite));
+
+  @include background-size(ceil($spriteWidth * ($percent/100)) ceil($spriteHeight * ($percent/100)));
+  width: ceil($width*($percent/100));
+  height: ceil($height*($percent/100));
+  background-position: 0 floor(nth(sprite-position($map, $sprite), 2)  * ($percent/100) );
+
+  @media (min--moz-device-pixel-ratio: 1.3),
+         (-o-min-device-pixel-ratio: 2.6/2),
+         (-webkit-min-device-pixel-ratio: 1.3),
+         (min-device-pixel-ratio: 1.3),
+         (min-resolution: 1.3dppx) {
+            & {
+                $spritePath2x:    sprite-path($map2x);
+                $spriteWidth2x:   image-width($spritePath2x);
+                $spriteHeight2x:  image-height($spritePath2x);
+
+                @include background-size(ceil(($spriteWidth2x * ($percent/100))/2) ceil(($spriteHeight2x * ($percent/100)/2)));
+                background-position: 0 floor((nth(sprite-position($map2x, $sprite), 2)  * ($percent/100)/2));
+            }
+    }
+}
+
+@mixin retina-background($image, $width, $height) {
+    @media (min--moz-device-pixel-ratio: 1.3),
+           (-o-min-device-pixel-ratio: 2.6/2),
+           (-webkit-min-device-pixel-ratio: 1.3),
+           (min-device-pixel-ratio: 1.3),
+           (min-resolution: 1.3dppx) {
+            /* on retina, use image that's scaled by 2 */
+            background-image: url($image);
+            background-size: $width $height;
+    }
+}

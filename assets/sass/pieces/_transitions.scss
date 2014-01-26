@@ -1,0 +1,80 @@
+// Trasitions - General
+//-------------------------------------------------//
+@include breakpoint(tablet-min) {
+    @include keyframe(moveUp) {
+        0% {
+            @include transform(translate(0, $spacing*25+px)); 
+        }
+     
+        100% {
+            @include transform(translate(0, 0)); 
+        }
+    }
+    
+    @include keyframe(moveLeft) {
+        0% {
+            @include transform(translate(-110%, 0)); 
+        }
+     
+        100% {
+            @include transform(translate(0, 0)); 
+        }
+    }
+    
+    @include keyframe(moveRight) {
+        0% {
+            @include transform(translate(100%, 0)); 
+        }
+     
+        100% {
+            @include transform(translate(0, 0)); 
+        }
+    }
+    
+    .js.csstransforms.cssanimations {
+        .section-slide {
+            overflow: hidden;
+        }
+        
+        .slide-left {
+            @include transform(translate(-$spacingBig, 0)); 
+            
+            &.-animated {
+                @include animation(0, 1s, moveLeft);
+            }
+        }
+        
+        .slide-right {
+            @include transform(translate($spacingBig, 0)); 
+            
+            &.-animated {
+                @include animation(0, 1s, moveRight);
+            }
+        }
+        
+        .slide-item-1,
+        .slide-item-2,
+        .slide-item-3 {
+            @include transform(translate(0, 110%)); 
+        }
+        
+        .slide-item-1 {
+            &.-sliden {
+                @include animation(250ms, 1s, moveUp);
+            }
+        }
+        
+        .slide-item-2 {
+            &.-sliden {
+                @include animation(0, 1s, moveUp);
+            }
+        }
+        
+        .slide-item-3 {
+            &.-sliden {
+                @include animation(500ms, 1s, moveUp);
+            }
+        }
+    }
+}
+//-------------------------------------------------//

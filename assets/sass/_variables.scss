@@ -1,0 +1,61 @@
+
+// General
+//-------------------------------------------------//
+$assetsImg: '/assets/img/';
+$assetsFonts:  '/assets/fonts/';
+//-------------------------------------------------//
+
+
+// Font
+//-------------------------------------------------//
+$body-font: "museo-slab", serif;
+$headline-font: "proxima-nova", sans-serif;
+
+$fontBase: 16;
+$lineBase: 21;
+//-------------------------------------------------//
+
+
+// Colors
+//-------------------------------------------------//
+$white: #fff;
+
+$black: #333333;
+$blackDark: #000;
+
+$grey: #706f73;
+$greyDark: #606060;
+$greyLight: #909295;
+$greyLighter: #d9d9d9;
+$greyLightest: #f3f3f3;
+
+$orange: #f27935;
+
+$blue: #69D2E7;
+//-------------------------------------------------//
+
+
+// Spacing
+//-------------------------------------------------//
+$spacing: 20;
+
+$spacingTiny: $spacing*.25+px;
+$spacingSmall:  $spacing*.5+px;
+$spacingMedium: $spacing*.75+px;
+$spacingDefault: $spacing+px;
+$spacingLarge: $spacing*2+px;
+$spacingBig: $spacing*3+px;
+$spacingHuge: $spacing*4+px;
+//-------------------------------------------------//
+
+
+// Mixins
+//-------------------------------------------------//
+@import "compass";
+@import "mixins/bourbon/bourbon";
+@import "mixins/animate";
+@import "mixins/breakpoint";
+@import "mixins/font-size";
+@import "mixins/retina-sprite";
+@import "mixins/other-mixins";
+//-------------------------------------------------//

@@ -1,0 +1,59 @@
+// Loading - General
+//-------------------------------------------------//
+%opacityLoad {
+    @include transition(opacity 1s ease-in-out);
+        
+    .no-js &,
+    .no-opacity &,
+    &.-animated,
+    .js &.-animated {
+        opacity: 1;
+    }
+    
+    &.-removed,
+    &.-removed.-animated,
+    .js & {
+        opacity: 0;
+    }
+    
+    .no-opacity & {
+        &,
+        &.-removed,
+        &.-removed.-animated {
+            visibility: hidden;
+        }
+        
+        &.-animated {
+            visibility: visible;
+        }
+    }
+}
+
+
+.nav-slide {
+    .nav-animate {
+        display: none;
+    }
+}
+
+.hdr-main {
+    .hdr-animate {
+        @extend %opacityLoad;
+    }
+}
+
+.load-content,
+.animate-box {
+    @extend %opacityLoad;
+}
+
+.load-content {
+    visibility: visible !important;
+    
+    .no-js &,
+    &.-removed,
+    &.-removed.-animated {
+        display: none;
+    }
+}
+//-------------------------------------------------//
