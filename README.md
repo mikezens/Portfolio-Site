@@ -10,3 +10,9 @@ A git project for my personal portfolio site.
 2. Add SS Social Icons
 	* This is a commercial font icon library, I couldn't include it. You can find them here [Symbolset - Social Regular](http://symbolset.com/icons/social-regular). They are only $5 and worth it.
 3. Add your Google Analtyics code.
+
+***
+
+#### Live Demo
+
+You can see a live version of my portfolio site [here](http://mikezens-developer.com/).
